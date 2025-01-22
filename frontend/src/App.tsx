@@ -12,7 +12,7 @@ function App() {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				setTopics(data.message);
+				setTopics(data);
 			});
 	}, []);
 
@@ -38,7 +38,8 @@ function App() {
 			<p className="read-the-docs">
 				Click on the Vite and React logos to learn more
 			</p>
-			<p>{topics}</p>
+			<p>Name: {topics.name}</p>
+			<p>Age: {topics.age}</p>
 		</>
 	);
 }

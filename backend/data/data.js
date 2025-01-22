@@ -1,3 +1,0 @@
-{
-	data: 'heloo from data';
-}

@@ -1,48 +1,57 @@
-import express, { Request, Response } from 'express';
-// import cors from 'cors';
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const cors = require('cors');
-import path from 'path';
-import fs from 'fs';
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 5000;
 
 // Middleware
-app.use(express.json());
-
-// Alternatively, configure CORS for specific origins
-const corsOptions = {
-	origin: 'http://localhost:5173', // Replace with your frontend URL
-	methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-	allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers
-};
-
 app.use(cors());
+app.use(bodyParser.json());
 
-// Read data from the JSON file
-// const dataFilePath = path.join(__dirname, 'data/data.json');
+// File path for storing todos
+const FILE_PATH = path.join(__dirname, 'data/todos.json');
 
-// Read data from the JSON file
-// const readData = () => {
-// 	const data = fs.readFileSync(dataFilePath, 'utf-8');
-// 	return JSON.parse(data);
-// };
-
-// Write data to the JSON file
-// const writeData = (data: any) => {
-// 	fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
-// };
-//READ DATA End
+// Initialize file if not exists
+if (!fs.existsSync(FILE_PATH)) {
+	fs.writeFileSync(FILE_PATH, JSON.stringify([]));
+}
 
 // Routes
-app.get('/api', (req: Request, res: Response) => {
-	// const data = readData();
-	// console.log(data);
-	//	res.json(data.data);
-	res.json({ message: 'Hello from the backend!' });
+app.get('/todos', (req, res) => {
+	const todos = JSON.parse(fs.readFileSync(FILE_PATH));
+	res.json(todos);
 });
 
-// Start Server
-app.listen(PORT, () => {
-	console.log(`Server is running at http://localhost:${PORT}`);
+app.post('/todos', (req, res) => {
+	const todos = JSON.parse(fs.readFileSync(FILE_PATH));
+	const newTodo = { id: Date.now(), text: req.body.text, completed: false };
+	todos.push(newTodo);
+	fs.writeFileSync(FILE_PATH, JSON.stringify(todos));
+	res.status(201).json(newTodo);
 });
+
+app.put('/todos/:id', (req, res) => {
+	const todos = JSON.parse(fs.readFileSync(FILE_PATH));
+	const updatedTodos = todos.map((todo) =>
+		todo.id === Number(req.params.id) ? { ...todo, ...req.body } : todo
+	);
+	fs.writeFileSync(FILE_PATH, JSON.stringify(updatedTodos));
+	res.json(updatedTodos.find((todo) => todo.id === Number(req.params.id)));
+});
+
+app.delete('/todos/:id', (req, res) => {
+	const todos = JSON.parse(fs.readFileSync(FILE_PATH));
+	const filteredTodos = todos.filter(
+		(todo) => todo.id !== Number(req.params.id)
+	);
+	fs.writeFileSync(FILE_PATH, JSON.stringify(filteredTodos));
+	res.status(204).send();
+});
+
+// Start server
+app.listen(PORT, () =>
+	console.log(`Backend running on http://localhost:${PORT}`)
+);
