@@ -1,46 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import React from 'react';
 
 function App() {
-	const [count, setCount] = useState(0);
-	const [topics, setTopics] = useState([]);
-
-	useEffect(() => {
-		fetch('http://localhost:5000/api')
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				setTopics(data);
-			});
-	}, []);
-
 	return (
-		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
-			</p>
-			<p>Name: {topics.name}</p>
-			<p>Age: {topics.age}</p>
-		</>
+		<div className="min-h-screen bg-gray-50">
+			{/* Header */}
+			<header className="bg-indigo-600 text-white py-6">
+				<div className="container mx-auto px-4">
+					<h1 className="text-3xl font-bold">FitLife Pro</h1>
+					<p className="mt-2 opacity-90">
+						Your personal fitness and nutrition companion
+					</p>
+				</div>
+			</header>
+
+			{/* Navigation */}
+			<nav className="bg-white shadow">
+				<div className="container mx-auto px-4">
+					<div className="flex space-x-4"></div>
+				</div>
+			</nav>
+
+			{/* Main Content */}
+			<main className="container mx-auto px-4 py-8">
+				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{'asdasdadadasdsa'}
+				</div>
+
+				{/* Plan Details Modal */}
+			</main>
+		</div>
 	);
 }
 
