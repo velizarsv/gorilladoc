@@ -2,7 +2,7 @@ import React from 'react';
 
 const MiddleSection: React.FC = () => {
   return (
-    <div className="container mx-auto py-12">
+    <section className="container mx-auto py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="text-center">
           <h2 className="text-2xl font-bold">Easy to Use</h2>
@@ -17,7 +17,7 @@ const MiddleSection: React.FC = () => {
           <p className="mt-4">Your data is safe with our encryption technology.</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

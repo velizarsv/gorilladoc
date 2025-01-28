@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
           <Link to="/signup" className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-blue-100">Sign Up</Link>
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+          {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
         </button>
       </div>
       {isOpen && (

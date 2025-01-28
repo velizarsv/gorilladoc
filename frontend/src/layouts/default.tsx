@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/Footer";
-import MiddleSection from "@/components/MddleSection";
+// import Header from "@/components/Header";
 
 export default function DefaultLayout({
   children,
@@ -9,11 +9,11 @@ export default function DefaultLayout({
 }) {
   return (
     <div className="relative flex flex-col h-screen">
+
       <Navbar />
-      <main className="container mx-auto max-w-7xl px-6 flex-grow pt-16">
+      <main className="flex-grow pt-16">
         {children}
       </main>
-      <MiddleSection />
       <Footer />
     </div>
   );
