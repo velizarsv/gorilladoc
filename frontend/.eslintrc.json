@@ -87,6 +87,10 @@
         "prev": ["const", "let", "var"],
         "next": ["const", "let", "var"]
       }
-    ]
+    ],
+      "extends": [
+        "some-other-config-you-use",
+        "prettier"
+      ]
   }
 }
