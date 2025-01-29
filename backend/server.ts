@@ -21,6 +21,7 @@ if (!fs.existsSync(FILE_PATH)) {
 
 // Routes
 app.get('/todos', (req: Request, res: Response) => {
+	debugger;
 	const todos = JSON.parse(fs.readFileSync(FILE_PATH, 'utf-8'));
 	res.json(todos);
 });
