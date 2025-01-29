@@ -89,7 +89,10 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        
+        <NavbarItem className="hidden lg:flex">
+          <Link href="/login" className="hover:text-blue-300">Login</Link>
+          <Link href="/signup" className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-blue-100">Sign Up</Link>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">

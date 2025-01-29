@@ -4,8 +4,8 @@ const MiddleSections: React.FC = () => {
   return (
     <>
       {/* Section 1 */}
-      <section className="container py-20 bg-blue-100">
-        <div className="mx-auto text-center">
+      <section className=" py-20 bg-blue-100 flex flex-grow">
+        <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold">Section 1: Easy to Use</h2>
           <p className="mt-4 text-lg">
             Our document generator is designed to be intuitive and user-friendly.

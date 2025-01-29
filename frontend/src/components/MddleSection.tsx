@@ -5,7 +5,7 @@ const MiddleSection: React.FC = () => {
     <section className="container mx-auto py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="text-center">
-          <h2 className="text-2xl font-bold">Easy to Use</h2>
+          <h2 className="text-2xl font-bold">Easy to asdasdasdas Use</h2>
           <p className="mt-4">Intuitive interface for quick document generation.</p>
         </div>
         <div className="text-center">
